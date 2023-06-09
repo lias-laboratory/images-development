@@ -1,0 +1,40 @@
+name: Build and push Docker images
+
+on:
+  workflow_dispatch:
+  #schedule:
+  # every monday at 2am
+    #- cron: '0 1 * * 1'
+
+jobs:
+  java-minimal:
+    uses: ./.github/workflows/main-workflow-template.yml
+    with:
+      image: java-minimal
+      context: java-minimal
+      test: true
+      base_image: base
+      java_version_1: 11
+      java_version_2: 17
+      java_version_3: 20
+      branch: ${{ github.ref }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  vscode-java:
+    needs: [java-minimal]
+    uses: ./.github/workflows/main-workflow-template.yml
+    with:
+      image: vscode-java
+      context: vscode
+      test: true
+      base_image: java-minimal
+      java_version_1: 11
+      java_version_2: 17
+      java_version_3: 20
+      branch: ${{ github.ref }}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
