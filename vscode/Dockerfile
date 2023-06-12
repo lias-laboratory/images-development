@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=mickaelbaron/onyxia-java-minimal
+ARG BASE_IMAGE=mickaelbaron/onyxia-java-maven
 FROM $BASE_IMAGE
 
 SHELL ["/bin/bash", "-c"]

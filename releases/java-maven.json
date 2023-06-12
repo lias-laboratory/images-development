@@ -1,0 +1,17 @@
+[
+    {
+        "base_image":"java-minimal-delim-java:java_version_1",
+        "output_image":"maven-java-delim-java:java_version_1",
+        "java_version":":java_version_1"
+    },
+    {
+        "base_image":"java-minimal-delim-java:java_version_2",
+        "output_image":"maven-java-delim-java:java_version_2",
+        "java_version":":java_version_2"
+    },
+    {
+        "base_image":"java-minimal-delim-java:java_version_3",
+        "output_image":"maven-java-delim-java:java_version_3",
+        "java_version":":java_version_3"
+    }
+]
