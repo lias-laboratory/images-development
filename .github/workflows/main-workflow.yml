@@ -23,6 +23,7 @@ jobs:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   java-maven:
+    needs: [java-minimal]
     uses: ./.github/workflows/main-workflow-template.yml
     with:
       image: java-maven
@@ -38,7 +39,7 @@ jobs:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   vscode-maven:
-    needs: [java-minimal]
+    needs: [java-maven]
     uses: ./.github/workflows/main-workflow-template.yml
     with:
       image: vscode-maven
